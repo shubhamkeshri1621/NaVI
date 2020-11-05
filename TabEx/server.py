@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/upload')
 def upload():
-   return render_template('/imdex.html')
+   return render_template('/index.html')
 	
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
@@ -33,7 +33,8 @@ def upload_file():
       print("[*]processing...")    
       table=tabx.main(img)
       
-      return table.render()
+      # return table.render()
+      return render_template("imdex.html", name=table.render())
 		
 if __name__ == '__main__':
    app.run(debug = True)
